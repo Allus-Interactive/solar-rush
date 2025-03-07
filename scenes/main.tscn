@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=4 uid="uid://chs6wbxhamhim"]
+
+[ext_resource type="PackedScene" uid="uid://c8g1576p2mopw" path="res://scenes/player/player.tscn" id="2_1uf6e"]
+[ext_resource type="TileSet" uid="uid://bk60np0mo76h" path="res://scenes/tile_set.tres" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://cg3k0jpq56lu5" path="res://scenes/UI/health_change_manager.tscn" id="4_sr5u4"]
+[ext_resource type="PackedScene" uid="uid://cl6kpcr88n2hc" path="res://scenes/UI/transitioner.tscn" id="6_cgu3t"]
+
+[node name="main" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("2_1uf6e")]
+position = Vector2(124, 181)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(124, 181)
+zoom = Vector2(3, 3)
+process_callback = 0
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="HealthChangeManager" parent="." instance=ExtResource("4_sr5u4")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Transitioner" parent="CanvasLayer" instance=ExtResource("6_cgu3t")]
+metadata/_edit_lock_ = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Node"]
+tile_map_data = PackedByteArray("AAAEAA8AAAAXAAkAAAAFAA8AAAAXAAkAAAAGAA8AAAAXAAkAAAAHAA8AAAAXAAkAAAAIAA8AAAAXAAkAAAAJAA8AAAAXAAkAAAAKAA8AAAAXAAkAAAALAA8AAAAXAAkAAAAMAA8AAAAXAAkAAAANAA8AAAAXAAkAAAADAA8AAAAXAAkAAAACAA8AAAAXAAkAAAABAA8AAAAXAAkAAAAAAA8AAAAXAAkAAAD//w8AAAAXAAkAAAD+/w8AAAAXAAkAAAD9/w8AAAAXAAkAAAD8/w8AAAAXAAkAAAAOAA8AAAAXAAkAAAAPAA8AAAAXAAkAAAAQAA8AAAAXAAkAAAAXABUAAAAXAAkAAAAWABUAAAAXAAkAAAAVABUAAAAXAAkAAAAUABUAAAAXAAkAAAATABUAAAAXAAkAAAASABUAAAAXAAkAAAASABYAAAAXAAkAAAARABYAAAAXAAkAAAAQABYAAAAXAAkAAAAPABYAAAAXAAkAAAAOABYAAAAXAAkAAAANABYAAAAXAAkAAAA=")
+tile_set = ExtResource("4_jyhfs")
