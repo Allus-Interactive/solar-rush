@@ -9,11 +9,12 @@ class_name Player
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var state_machine : CharacterStateMachine = $CharacterStateMachine
 @onready var fallen_timer: Timer = $FallenTimer
+@onready var ladder_ray_cast: RayCast2D = $LadderRayCast
 
 # Get the gravity from the project settings to be synced with RigidBody nodes
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction : Vector2 = Vector2.ZERO
-var fallen_off_screen : bool = false;
+var is_on_ladder : bool = false;
 
 signal facing_direction_changed(facing_right : bool)
 
@@ -21,26 +22,36 @@ func _ready():
 	animation_tree.active = true
 
 func _physics_process(delta):
-	if not is_on_floor():
+	if not is_on_floor() || not is_on_ladder:
 		# Add the gravity
 		velocity.y += gravity * delta
 	
 	# Get the input direction and handle the movement/deceleration
 	direction = Input.get_vector("move_left", "move_right", "ui_up", "ui_down")
 	
-	# can only move if player hasn't fallen off the screen
-	if not fallen_off_screen:
-		if direction.x != 0 && state_machine.check_if_can_move():
-			velocity.x = direction.x * speed
-		elif state_machine.check_if_is_rolling():
-			pass # do nothing, velocity is controlled in the roll function
-		elif state_machine.current_state != hit_state:
-			velocity.x = move_toward(velocity.x, 0, speed)
+	# check raycast for ladder
+	var ladderCollider = ladder_ray_cast.get_collider()
 	
-	## Logic for falling off screen. Not required? 
-	# if position.y > 300 && not fallen_off_screen:
-		# fallen_off_screen = true
-		# fallen_timer.start()
+	if ladderCollider:
+		print("is on ladder")
+		is_on_ladder = true
+	else:
+		print("is not on ladder")
+		is_on_ladder = false
+	
+	# if not is_on_ladder:
+	if direction.x != 0 && state_machine.check_if_can_move():
+		velocity.x = direction.x * speed
+	elif state_machine.check_if_is_rolling():
+		pass # do nothing, velocity is controlled in the roll function
+	elif state_machine.current_state != hit_state:
+		velocity.x = move_toward(velocity.x, 0, speed)
+	
+	if is_on_ladder:
+		if Input.is_action_pressed("ui_down"):
+			velocity.y = direction.y * (speed/5)
+		else:
+			velocity.y = 0
 	
 	move_and_slide()
 	update_animation_parameters()
