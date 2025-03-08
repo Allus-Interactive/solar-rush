@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp7pqdqjvxp3j"]
+
+[ext_resource type="Texture2D" uid="uid://c28jlwtgcougp" path="res://assets/obstacles/chandelier.png" id="1_axdrf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gu7qt"]
+size = Vector2(16, 20)
+
+[node name="Chandelier" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_axdrf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gu7qt")

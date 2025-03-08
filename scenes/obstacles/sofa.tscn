@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://skwgj6ipq6dd"]
+
+[ext_resource type="Texture2D" uid="uid://d2fr3g1vxv8s4" path="res://assets/obstacles/sofa.png" id="1_5rora"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jql6k"]
+size = Vector2(40, 20)
+
+[node name="Sofa" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_5rora")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jql6k")

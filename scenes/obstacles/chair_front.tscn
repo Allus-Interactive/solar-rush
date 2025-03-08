@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://lxghy410hwjk"]
+
+[ext_resource type="Texture2D" uid="uid://ga0no67y232l" path="res://assets/obstacles/chair_front.png" id="1_cj4iu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gu7qt"]
+size = Vector2(14, 16)
+
+[node name="ChairFront" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cj4iu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gu7qt")
