@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://cru675xt1bjev"]
+
+[ext_resource type="Script" uid="uid://ruh8t2i17sbc" path="res://scripts/menu.gd" id="1_ujjcl"]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_ujjcl")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1153.0
+offset_bottom = 215.0
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_top = 202.0
+offset_right = 1153.0
+offset_bottom = 417.0
+theme_override_font_sizes/font_size = 32
+text = "YOU COULDN'T DESCEND THE BUILDING IN TIME!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_top = 371.0
+offset_right = 1153.0
+offset_bottom = 586.0
+theme_override_font_sizes/font_size = 32
+text = "Press A to Try Again"
+horizontal_alignment = 1
+vertical_alignment = 1

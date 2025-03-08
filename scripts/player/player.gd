@@ -9,12 +9,16 @@ class_name Player
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var state_machine : CharacterStateMachine = $CharacterStateMachine
 @onready var fallen_timer: Timer = $FallenTimer
-@onready var ladder_ray_cast: RayCast2D = $LadderRayCast
+@onready var end_game_timer: Timer = $EndGameTimer
+
+var is_over_button : bool = false
+
+signal open_trapdoor
+signal press_button
 
 # Get the gravity from the project settings to be synced with RigidBody nodes
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction : Vector2 = Vector2.ZERO
-var is_on_ladder : bool = false;
 
 signal facing_direction_changed(facing_right : bool)
 
@@ -22,36 +26,24 @@ func _ready():
 	animation_tree.active = true
 
 func _physics_process(delta):
-	if not is_on_floor() || not is_on_ladder:
+	if not is_on_floor():
 		# Add the gravity
 		velocity.y += gravity * delta
+	
+	if Input.is_action_pressed("interact"):
+		if is_over_button:
+			emit_signal("press_button")
+			emit_signal("open_trapdoor")
 	
 	# Get the input direction and handle the movement/deceleration
 	direction = Input.get_vector("move_left", "move_right", "ui_up", "ui_down")
 	
-	# check raycast for ladder
-	var ladderCollider = ladder_ray_cast.get_collider()
-	
-	if ladderCollider:
-		print("is on ladder")
-		is_on_ladder = true
-	else:
-		print("is not on ladder")
-		is_on_ladder = false
-	
-	# if not is_on_ladder:
 	if direction.x != 0 && state_machine.check_if_can_move():
 		velocity.x = direction.x * speed
 	elif state_machine.check_if_is_rolling():
 		pass # do nothing, velocity is controlled in the roll function
 	elif state_machine.current_state != hit_state:
 		velocity.x = move_toward(velocity.x, 0, speed)
-	
-	if is_on_ladder:
-		if Input.is_action_pressed("ui_down"):
-			velocity.y = direction.y * (speed/5)
-		else:
-			velocity.y = 0
 	
 	move_and_slide()
 	update_animation_parameters()
@@ -70,3 +62,17 @@ func update_direction():
 
 func _on_fallen_timer_timeout():
 	get_tree().reload_current_scene()
+
+func _on_button_body_entered(_body: Node2D):
+	is_over_button = true
+
+func _on_button_body_exited(_body: Node2D):
+	is_over_button = false
+
+func _on_end_game_area_body_entered(body: Node2D):
+	print(body.name)
+	if body.name == "player":
+		end_game_timer.start(1)
+
+func _on_end_game_timer_timeout() -> void:
+		get_tree().change_scene_to_file("res://scenes/menus/end_game.tscn")
