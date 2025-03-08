@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://chs6wbxhamhim"]
+[gd_scene load_steps=7 format=4 uid="uid://chs6wbxhamhim"]
 
 [ext_resource type="Script" uid="uid://3v2ovjv26dsr" path="res://scripts/main.gd" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://c8g1576p2mopw" path="res://scenes/player/player.tscn" id="2_1uf6e"]
 [ext_resource type="TileSet" uid="uid://bk60np0mo76h" path="res://tile_set.tres" id="4_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://cg3k0jpq56lu5" path="res://scenes/UI/health_change_manager.tscn" id="4_sr5u4"]
 [ext_resource type="PackedScene" uid="uid://bgy4ps13bq36c" path="res://scenes/environment/trapdoor.tscn" id="5_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://cl6kpcr88n2hc" path="res://scenes/UI/transitioner.tscn" id="6_cgu3t"]
 [ext_resource type="PackedScene" uid="uid://buguw136pt8w8" path="res://scenes/environment/button.tscn" id="6_tefeu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
@@ -117,12 +115,7 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="HealthChangeManager" parent="." instance=ExtResource("4_sr5u4")]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Transitioner" parent="CanvasLayer" instance=ExtResource("6_cgu3t")]
-metadata/_edit_lock_ = true
 
 [node name="TimerLabel" type="Label" parent="CanvasLayer"]
 offset_right = 139.0
@@ -144,7 +137,7 @@ shape = SubResource("RectangleShape2D_tefeu")
 [node name="EndGameTimer" type="Timer" parent="EndGameArea"]
 
 [node name="CountdownTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 70.0
 one_shot = true
 autostart = true
 
