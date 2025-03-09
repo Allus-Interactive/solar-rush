@@ -110,12 +110,14 @@ player = NodePath("../../player")
 
 [node name="player" parent="." instance=ExtResource("2_1uf6e")]
 position = Vector2(-10, 167)
+scale = Vector2(0.85, 0.85)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-10, 167)
+scale = Vector2(0.85, 0.85)
 zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
@@ -154,7 +156,7 @@ shape = SubResource("RectangleShape2D_tefeu")
 [node name="EndGameTimer" type="Timer" parent="EndGameArea"]
 
 [node name="CountdownTimer" type="Timer" parent="."]
-wait_time = 70.0
+wait_time = 180.0
 one_shot = true
 autostart = true
 

@@ -48,4 +48,3 @@ func handle_jump_animations():
 		# Player is falling
 		playback.travel(end_jump_animation)
 		is_falling = true
-
