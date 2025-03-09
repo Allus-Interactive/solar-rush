@@ -1,0 +1,145 @@
+[gd_scene load_steps=7 format=3 uid="uid://c26xt74lh6mlj"]
+
+[ext_resource type="Script" uid="uid://b2270f7lxjc3d" path="res://scripts/boxes2.gd" id="1_ekd4h"]
+[ext_resource type="Texture2D" uid="uid://ciieiuupjrkhp" path="res://assets/breakables/box.png" id="2_daxeb"]
+
+[sub_resource type="Animation" id="Animation_qqf4w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageArea/DamageCollision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 15.5673)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.38419e-07, 0.783672)]
+}
+
+[sub_resource type="Animation" id="Animation_op4a0"]
+resource_name = "break"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageArea/DamageCollision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(16, 29.5673), Vector2(16, 15.5673)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.38419e-07, 0.783672), Vector2(0, 8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ukf3"]
+_data = {
+&"RESET": SubResource("Animation_qqf4w"),
+&"break": SubResource("Animation_op4a0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlvsk"]
+size = Vector2(16, 15.5673)
+
+[node name="Boxes2" type="StaticBody2D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_ekd4h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_daxeb")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7ukf3")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.38419e-07, 0.783672)
+shape = SubResource("RectangleShape2D_wlvsk")
+
+[node name="DamageArea" type="Area2D" parent="."]
+scale = Vector2(0.704847, 0.808426)
+collision_layer = 4
+collision_mask = 2
+
+[node name="DamageCollision" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(3.38256e-07, 4.49353)
+scale = Vector2(1.54828, 1.05016)
+shape = SubResource("RectangleShape2D_wlvsk")
+debug_color = Color(0.792157, 0.0980392, 0.262745, 0.419608)

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cmknouytteuqy" path="res://assets/obstacles/table.png" id="1_qbr7w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jql6k"]
-size = Vector2(40, 19)
+size = Vector2(40, 20)
 
 [node name="Table" type="StaticBody2D"]
 
@@ -12,5 +12,4 @@ scale = Vector2(1.25, 1.25)
 texture = ExtResource("1_qbr7w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_jql6k")

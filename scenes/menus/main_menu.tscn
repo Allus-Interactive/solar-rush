@@ -1,31 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://dopt10sktmi28"]
+[gd_scene load_steps=3 format=3 uid="uid://dopt10sktmi28"]
 
 [ext_resource type="Script" uid="uid://ruh8t2i17sbc" path="res://scripts/menu.gd" id="1_xqga4"]
+[ext_resource type="Texture2D" uid="uid://doyoaf4bdflm8" path="res://assets/cover image.PNG" id="2_ovrgc"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_xqga4")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(583, 325)
+texture = ExtResource("2_ovrgc")
+
 [node name="Label" type="Label" parent="."]
+offset_top = 430.0
 offset_right = 1153.0
-offset_bottom = 215.0
-theme_override_font_sizes/font_size = 64
-text = "SOLAR RUSH"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="."]
-offset_top = 202.0
-offset_right = 1153.0
-offset_bottom = 417.0
-theme_override_font_sizes/font_size = 32
-text = "Can you make it to the underground bunker in time?"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="."]
-offset_top = 371.0
-offset_right = 1153.0
-offset_bottom = 586.0
+offset_bottom = 645.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Press A to Start"
 horizontal_alignment = 1

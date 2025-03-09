@@ -11,11 +11,17 @@ class_name Player
 @onready var fallen_timer: Timer = $FallenTimer
 @onready var end_game_timer: Timer = $EndGameTimer
 @onready var game_over_timer: Timer = $GameOverTimer
+#@onready var sword: Area2D = $Sword
 
 var is_over_button : bool = false
 
 signal open_trapdoor
 signal press_button
+signal break_object
+signal break_object_2
+signal break_object_3
+signal break_object_4
+signal break_object_5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -25,6 +31,11 @@ signal facing_direction_changed(facing_right : bool)
 
 func _ready():
 	animation_tree.active = true
+	$Sword.connect("hit_breakable", on_hit_breakable)
+	$Sword.connect("hit_breakable_2", on_hit_breakable_2)
+	$Sword.connect("hit_breakable_3", on_hit_breakable_3)
+	$Sword.connect("hit_breakable_4", on_hit_breakable_4)
+	$Sword.connect("hit_breakable_5", on_hit_breakable_5)
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -83,3 +94,18 @@ func _on_flare_flames_body_entered(body: Node2D):
 
 func _on_game_over_timer_timeout():
 	get_tree().change_scene_to_file("res://scenes/menus/game_over.tscn")
+
+func on_hit_breakable():
+	emit_signal("break_object")
+	
+func on_hit_breakable_2():
+	emit_signal("break_object_2")
+	
+func on_hit_breakable_3():
+	emit_signal("break_object_3")
+	
+func on_hit_breakable_4():
+	emit_signal("break_object_4")
+	
+func on_hit_breakable_5():
+	emit_signal("break_object_5")

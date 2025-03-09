@@ -4,24 +4,28 @@ extends Area2D
 @export var player : Player
 @export var facing_shape : FacingCollisionShape2D
 
+signal hit_breakable
+signal hit_breakable_2
+signal hit_breakable_3
+signal hit_breakable_4
+signal hit_breakable_5
+
 func _ready():
 	monitoring = false
 	player.connect("facing_direction_changed", _on_player_facing_direction_changed)
 
 func _on_body_entered(body):
-	pass
-	#for child in body.get_children():
-		#if child is Damageable:
-			## get direction from sword to body
-			#var direction_to_damageable = body.global_position - get_parent().global_position
-			#var direction_sign = sign(direction_to_damageable.x)
-			#
-			#if direction_sign > 0:
-				#child.hit(damage, Vector2.RIGHT)
-			#elif direction_sign < 0:
-				#child.hit(damage, Vector2.LEFT)
-			#else:
-				#child.hit(damage, Vector2.ZERO)
+	print(body.name)
+	if body.name == "Boxes":
+		emit_signal("hit_breakable")
+	elif body.name == "Boxes2":
+		emit_signal("hit_breakable_2")
+	elif body.name == "Boxes3":
+		emit_signal("hit_breakable_3")
+	elif body.name == "Boxes4":
+		emit_signal("hit_breakable_4")
+	elif body.name == "Boxes5":
+		emit_signal("hit_breakable_5")
 
 func _on_player_facing_direction_changed(facing_right : bool):
 	if facing_right:

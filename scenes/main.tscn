@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://chs6wbxhamhim"]
+[gd_scene load_steps=19 format=4 uid="uid://chs6wbxhamhim"]
 
 [ext_resource type="Script" uid="uid://3v2ovjv26dsr" path="res://scripts/main.gd" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://c8g1576p2mopw" path="res://scenes/player/player.tscn" id="2_1uf6e"]
@@ -12,6 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://skwgj6ipq6dd" path="res://scenes/obstacles/sofa.tscn" id="8_choun"]
 [ext_resource type="PackedScene" uid="uid://ckdb765nh0h0n" path="res://scenes/obstacles/table.tscn" id="9_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://ccwn3v6bxvqx6" path="res://scenes/environment/flare_flames.tscn" id="12_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://c26xt74lh6mlj" path="res://scenes/breakables/boxes2.tscn" id="13_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://co37tr5v2wh2u" path="res://scenes/breakables/boxes4.tscn" id="13_muem4"]
+[ext_resource type="PackedScene" uid="uid://b4lj8kerp16xd" path="res://scenes/breakables/boxes.tscn" id="13_trceg"]
+[ext_resource type="PackedScene" uid="uid://bxkan51eowbrj" path="res://scenes/breakables/boxes5.tscn" id="14_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://b33ya0yl3mrct" path="res://scenes/breakables/boxes3.tscn" id="15_0ld40"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
 
@@ -31,7 +36,7 @@ position = Vector2(540, 167)
 player = NodePath("../player")
 
 [node name="Button2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_tefeu")]
-position = Vector2(539, 230)
+position = Vector2(-21, 227)
 player = NodePath("../player")
 
 [node name="Button3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_tefeu")]
@@ -108,15 +113,248 @@ player = NodePath("../../player")
 position = Vector2(32, 752)
 player = NodePath("../../player")
 
+[node name="Chandelier" parent="." instance=ExtResource("6_ya4ey")]
+position = Vector2(213, 146)
+
+[node name="Table" parent="." instance=ExtResource("9_ya4ey")]
+position = Vector2(398, 175)
+
+[node name="ChairLeft" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(366, 177)
+
+[node name="ChairFront" parent="." instance=ExtResource("6_o6xl0")]
+position = Vector2(429, 177)
+
+[node name="Table2" parent="." instance=ExtResource("9_ya4ey")]
+position = Vector2(342, 239)
+
+[node name="ChairLeft2" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(310, 241)
+
+[node name="ChairFront2" parent="." instance=ExtResource("6_o6xl0")]
+position = Vector2(373, 241)
+
+[node name="Table3" parent="." instance=ExtResource("9_ya4ey")]
+position = Vector2(117, 303)
+
+[node name="ChairLeft5" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(85, 305)
+
+[node name="ChairFront3" parent="." instance=ExtResource("6_o6xl0")]
+position = Vector2(148, 305)
+
+[node name="Table4" parent="." instance=ExtResource("9_ya4ey")]
+position = Vector2(366, 303)
+
+[node name="ChairLeft6" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(334, 305)
+
+[node name="ChairFront4" parent="." instance=ExtResource("6_o6xl0")]
+position = Vector2(397, 305)
+
+[node name="Table5" parent="." instance=ExtResource("9_ya4ey")]
+position = Vector2(548, 431)
+
+[node name="ChairLeft7" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(516, 433)
+
+[node name="ChairFront5" parent="." instance=ExtResource("6_o6xl0")]
+position = Vector2(579, 433)
+
+[node name="Table6" parent="." instance=ExtResource("9_ya4ey")]
+position = Vector2(127, 431)
+
+[node name="ChairLeft8" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(95, 433)
+
+[node name="ChairFront6" parent="." instance=ExtResource("6_o6xl0")]
+position = Vector2(158, 433)
+
+[node name="Table7" parent="." instance=ExtResource("9_ya4ey")]
+position = Vector2(341, 495)
+
+[node name="ChairLeft9" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(309, 497)
+
+[node name="ChairFront7" parent="." instance=ExtResource("6_o6xl0")]
+position = Vector2(372, 497)
+
+[node name="Table8" parent="." instance=ExtResource("9_ya4ey")]
+position = Vector2(284, 623)
+
+[node name="ChairLeft10" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(252, 625)
+
+[node name="ChairFront8" parent="." instance=ExtResource("6_o6xl0")]
+position = Vector2(315, 625)
+
+[node name="Table9" parent="." instance=ExtResource("9_ya4ey")]
+position = Vector2(450, 688)
+
+[node name="ChairLeft11" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(418, 690)
+
+[node name="ChairFront9" parent="." instance=ExtResource("6_o6xl0")]
+position = Vector2(481, 690)
+
+[node name="Table10" parent="." instance=ExtResource("9_ya4ey")]
+position = Vector2(102, 751)
+
+[node name="ChairLeft12" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(70, 753)
+
+[node name="ChairFront10" parent="." instance=ExtResource("6_o6xl0")]
+position = Vector2(133, 753)
+
+[node name="Sofa" parent="." instance=ExtResource("8_choun")]
+position = Vector2(517, 239)
+
+[node name="Sofa2" parent="." instance=ExtResource("8_choun")]
+position = Vector2(482, 304)
+
+[node name="Sofa3" parent="." instance=ExtResource("8_choun")]
+position = Vector2(486, 369)
+
+[node name="Sofa4" parent="." instance=ExtResource("8_choun")]
+position = Vector2(202, 368)
+
+[node name="Sofa5" parent="." instance=ExtResource("8_choun")]
+position = Vector2(389, 432)
+
+[node name="Sofa6" parent="." instance=ExtResource("8_choun")]
+position = Vector2(200, 496)
+
+[node name="Sofa7" parent="." instance=ExtResource("8_choun")]
+position = Vector2(496, 559)
+
+[node name="Sofa8" parent="." instance=ExtResource("8_choun")]
+position = Vector2(556, 559)
+
+[node name="Sofa9" parent="." instance=ExtResource("8_choun")]
+position = Vector2(186, 624)
+
+[node name="Sofa10" parent="." instance=ExtResource("8_choun")]
+position = Vector2(228, 686)
+
+[node name="Sofa11" parent="." instance=ExtResource("8_choun")]
+position = Vector2(482, 752)
+
+[node name="Sofa12" parent="." instance=ExtResource("8_choun")]
+position = Vector2(532, 751)
+
+[node name="ChairLeft3" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(91, 177)
+
+[node name="Desk" parent="." instance=ExtResource("7_tipki")]
+position = Vector2(120, 177)
+scale = Vector2(1.1, 1.1)
+
+[node name="ChairLeft4" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(93, 241)
+
+[node name="Desk2" parent="." instance=ExtResource("7_tipki")]
+position = Vector2(122, 241)
+scale = Vector2(1.1, 1.1)
+
+[node name="ChairLeft13" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(218, 307)
+
+[node name="Desk3" parent="." instance=ExtResource("7_tipki")]
+position = Vector2(247, 307)
+scale = Vector2(1.1, 1.1)
+
+[node name="ChairLeft14" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(552, 370)
+
+[node name="Desk4" parent="." instance=ExtResource("7_tipki")]
+position = Vector2(581, 370)
+scale = Vector2(1.1, 1.1)
+
+[node name="ChairLeft15" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(269, 434)
+
+[node name="Desk5" parent="." instance=ExtResource("7_tipki")]
+position = Vector2(298, 434)
+scale = Vector2(1.1, 1.1)
+
+[node name="ChairLeft16" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(462, 497)
+
+[node name="Desk6" parent="." instance=ExtResource("7_tipki")]
+position = Vector2(491, 497)
+scale = Vector2(1.1, 1.1)
+
+[node name="ChairLeft17" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(236, 561)
+
+[node name="Desk7" parent="." instance=ExtResource("7_tipki")]
+position = Vector2(265, 561)
+scale = Vector2(1.1, 1.1)
+
+[node name="ChairLeft18" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(86, 562)
+
+[node name="Desk8" parent="." instance=ExtResource("7_tipki")]
+position = Vector2(115, 562)
+scale = Vector2(1.1, 1.1)
+
+[node name="ChairLeft19" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(446, 626)
+
+[node name="Desk9" parent="." instance=ExtResource("7_tipki")]
+position = Vector2(475, 626)
+scale = Vector2(1.1, 1.1)
+
+[node name="ChairLeft20" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(70, 689)
+
+[node name="Desk10" parent="." instance=ExtResource("7_tipki")]
+position = Vector2(99, 689)
+scale = Vector2(1.1, 1.1)
+
+[node name="ChairLeft21" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(228, 753)
+
+[node name="Desk11" parent="." instance=ExtResource("7_tipki")]
+position = Vector2(257, 753)
+scale = Vector2(1.1, 1.1)
+
+[node name="ChairLeft22" parent="." instance=ExtResource("6_tipki")]
+position = Vector2(325, 753)
+
+[node name="Desk12" parent="." instance=ExtResource("7_tipki")]
+position = Vector2(354, 753)
+scale = Vector2(1.1, 1.1)
+
+[node name="Boxes5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("14_dp3eg")]
+position = Vector2(5, 745)
+player = NodePath("../player")
+
+[node name="Boxes4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("13_muem4")]
+position = Vector2(350, 617)
+player = NodePath("../player")
+
+[node name="Boxes3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("15_0ld40")]
+position = Vector2(632, 490)
+player = NodePath("../player")
+
+[node name="Boxes2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("13_a8y0u")]
+position = Vector2(391, 363)
+player = NodePath("../player")
+
+[node name="Boxes" parent="." node_paths=PackedStringArray("player") instance=ExtResource("13_trceg")]
+position = Vector2(-20, 234)
+player = NodePath("../player")
+
 [node name="player" parent="." instance=ExtResource("2_1uf6e")]
-position = Vector2(-10, 167)
+position = Vector2(-12, 170)
 scale = Vector2(0.85, 0.85)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-10, 167)
+position = Vector2(-12, 170)
 scale = Vector2(0.85, 0.85)
 zoom = Vector2(3, 3)
 process_callback = 0
@@ -126,7 +364,7 @@ drag_vertical_enabled = true
 
 [node name="FlareFlames" parent="." instance=ExtResource("12_eb6dy")]
 position = Vector2(319, -270)
-speed = 2.0
+speed = 7.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -156,29 +394,9 @@ shape = SubResource("RectangleShape2D_tefeu")
 [node name="EndGameTimer" type="Timer" parent="EndGameArea"]
 
 [node name="CountdownTimer" type="Timer" parent="."]
-wait_time = 180.0
+wait_time = 90.0
 one_shot = true
 autostart = true
-
-[node name="Obstacles" type="Node" parent="."]
-
-[node name="Chandelier" parent="Obstacles" instance=ExtResource("6_ya4ey")]
-position = Vector2(213, 146)
-
-[node name="ChairLeft" parent="Obstacles" instance=ExtResource("6_tipki")]
-position = Vector2(90, 177)
-
-[node name="ChairFront" parent="Obstacles" instance=ExtResource("6_o6xl0")]
-position = Vector2(144, 177)
-
-[node name="Sofa" parent="Obstacles" instance=ExtResource("8_choun")]
-position = Vector2(319, 175)
-
-[node name="Table" parent="Obstacles" instance=ExtResource("9_ya4ey")]
-position = Vector2(398, 175)
-
-[node name="Desk" parent="Obstacles" instance=ExtResource("7_tipki")]
-position = Vector2(117, 177)
 
 [connection signal="body_entered" from="Button" to="player" method="_on_button_body_entered"]
 [connection signal="body_exited" from="Button" to="player" method="_on_button_body_exited"]
