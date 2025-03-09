@@ -10,6 +10,7 @@ class_name Player
 @onready var state_machine : CharacterStateMachine = $CharacterStateMachine
 @onready var fallen_timer: Timer = $FallenTimer
 @onready var end_game_timer: Timer = $EndGameTimer
+@onready var game_over_timer: Timer = $GameOverTimer
 
 var is_over_button : bool = false
 
@@ -70,9 +71,15 @@ func _on_button_body_exited(_body: Node2D):
 	is_over_button = false
 
 func _on_end_game_area_body_entered(body: Node2D):
-	print(body.name)
 	if body.name == "player":
 		end_game_timer.start(1)
 
-func _on_end_game_timer_timeout() -> void:
+func _on_end_game_timer_timeout():
 		get_tree().change_scene_to_file("res://scenes/menus/end_game.tscn")
+
+func _on_flare_flames_body_entered(body: Node2D):
+	if body.name == "player":
+		game_over_timer.start(1)
+
+func _on_game_over_timer_timeout():
+	get_tree().change_scene_to_file("res://scenes/menus/game_over.tscn")

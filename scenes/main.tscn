@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://chs6wbxhamhim"]
+[gd_scene load_steps=14 format=4 uid="uid://chs6wbxhamhim"]
 
 [ext_resource type="Script" uid="uid://3v2ovjv26dsr" path="res://scripts/main.gd" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://c8g1576p2mopw" path="res://scenes/player/player.tscn" id="2_1uf6e"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c1rg416qhmxsb" path="res://scenes/obstacles/desk.tscn" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://skwgj6ipq6dd" path="res://scenes/obstacles/sofa.tscn" id="8_choun"]
 [ext_resource type="PackedScene" uid="uid://ckdb765nh0h0n" path="res://scenes/obstacles/table.tscn" id="9_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://ccwn3v6bxvqx6" path="res://scenes/environment/flare_flames.tscn" id="12_eb6dy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
 
@@ -121,11 +122,19 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
+[node name="FlareFlames" parent="." instance=ExtResource("12_eb6dy")]
+position = Vector2(319, -270)
+speed = 2.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TimerLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
 offset_right = 139.0
-offset_bottom = 66.0
+grow_vertical = 0
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -189,5 +198,6 @@ position = Vector2(117, 177)
 [connection signal="body_exited" from="Button9" to="player" method="_on_button_body_exited"]
 [connection signal="body_entered" from="Button10" to="player" method="_on_button_body_entered"]
 [connection signal="body_exited" from="Button10" to="player" method="_on_button_body_exited"]
+[connection signal="body_entered" from="FlareFlames" to="player" method="_on_flare_flames_body_entered"]
 [connection signal="body_entered" from="EndGameArea" to="player" method="_on_end_game_area_body_entered"]
 [connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
